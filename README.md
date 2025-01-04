@@ -1,8 +1,11 @@
 >[!NOTE]
 > a note
 
+>[!WARNING]
+>  a warning
 
-
+>[!IMPORTANT]
+> something important
 
 **Table of Contents**
 1. **Introduction**
