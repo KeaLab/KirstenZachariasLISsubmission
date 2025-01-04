@@ -1,4 +1,10 @@
-**Table of Contents
+>[!NOTE]
+> a note
+
+
+
+
+**Table of Contents**
 1. **Introduction**
 2. **Functionalities**
 3. **Architecture and Data Model**
@@ -33,7 +39,7 @@ The main activities the lab technician can perform using the app are as follows:
 
 ---
 
-3. **Architecture and Data Model
+3. **Architecture and Data Model**
 
 | Tables                               | Forms                                                                                                                                        | Views and Charts                                                                                                                                                                                                                                                                                                                                                                                           | Rules & Data Validation                                                                                                                                                                                                                                                                                                                | Relationships, Lookups and Choices                                                                                                                              |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,9 +63,8 @@ Objective 2: design the app for a lab technician role, providing a main quick-re
 Objective 3: design the forms in the app to be user-friendly enough to search and edit records as well as create new ones.
 
 Objective 4: remove any specific **time of day** from the To-Do list as verifications of equipment and expirations of chemicals are not specific to the time and are not of use to a lab tech. 
-
-> [!NOTE] Approach for Objective 4:
-> Use formulas **outside** of the table instead to **display** the value without the time appearing or causing conflicts with the data type. Since verification due date of equipment is autocalculated, it needs to be a date value in the table, but the way the data is seen by the user can be modified by editing the canvas page. Formula example: Text(ThisItem.'Next Verification Due Date', "[$-en-US]yyyy-mm-dd")
+>[!Note]
+> For objective 4, I had to use formulas **outside** of the table instead to **display** the value without the time appearing or causing conflicts with the data type. Since verification due date of equipment is autocalculated, it needs to be a date value in the table, but the way the data is seen by the user can be modified by editing the canvas page. Formula example: Text(ThisItem.'Next Verification Due Date', "[$-en-US]yyyy-mm-dd")
 
 ---
 5. **Workflow and Processes**
@@ -69,8 +74,8 @@ Objective: Use Power FX to automate Equipment table verification data for lab te
 - If a piece of equipment is due for verification  >7 days from current user date, verification status is "Verification in date"
 - If equipment is due for verification because the verification due date has passed, verification status is "Verification Overdue!"
 Result: Success using the following formula: 
-> [!NOTE] Power FX Equipment Date Automatic Status
-> If(UTCToday() > 'Next Verification Due Date', "Verification Overdue!", If('Next Verification Due Date' >= UTCToday() && 'Next Verification Due Date' < UTCToday() + 7,"Verify Soon","Verification in Date"))
+> [!Note] 
+> Power FX Equipment Date Automatic Status: If(UTCToday() > 'Next Verification Due Date', "Verification Overdue!", If('Next Verification Due Date' >= UTCToday() && 'Next Verification Due Date' < UTCToday() + 7,"Verify Soon","Verification in Date"))
 
 
 Objective: send an email with COA when sample testing complete
@@ -147,4 +152,4 @@ Other notes:
 Functionality Goals:
 - "View" the contents of a PDF so a form will have an easy-access to a chemical SDS
 - Add a new SDS to the chemical inventory
-- 
+- ![chemical bottle](https://github.com/user-attachments/assets/7cf5b2df-40f0-44e9-91f4-6844381e3ee9)
