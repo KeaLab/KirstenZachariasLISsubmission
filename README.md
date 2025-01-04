@@ -152,4 +152,4 @@ Other notes:
 Functionality Goals:
 - "View" the contents of a PDF so a form will have an easy-access to a chemical SDS
 - Add a new SDS to the chemical inventory
-- ![chemical bottle](https://github.com/user-attachments/assets/7cf5b2df-40f0-44e9-91f4-6844381e3ee9)
+
