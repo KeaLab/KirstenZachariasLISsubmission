@@ -1,11 +1,3 @@
->[!NOTE]
-> a note
-
->[!WARNING]
->  a warning
-
->[!IMPORTANT]
-> something important
 
 **Table of Contents**
 1. **Introduction**
@@ -21,6 +13,7 @@
 ---
 
 1. **Introduction**
+
 The model-driven app is named *LIMS Lite* (referred to as the "app").
 
 The purpose of this model-driven app is assisting a laboratory's technicians with referencing and capturing on-site data for tasks regarding sample tracking, documentation access, equipment maintenance and chemical inventory. These records are required to adhere to the lab's quality management system under regulatory accreditation. The app serves as an example of a quick, user-friendly way to manage records at the lab technician security level.
@@ -63,7 +56,11 @@ Objective 1: to remove/hide any table data that isn't relevant or necessary for 
 Objective 2: design the app for a lab technician role, providing a main quick-reference screen but also separate navigation tabs in the app sidebar for each relevant area of work such as samples, equipment and chemical inventory so the user can easily navigate to the area needed to capture data.
 	Result: Data tables listed in the app sidebar have unique svg icons for quick reference and visual appeal. Associated forms are divided into multiple columns for easy lookup of specific records for editing.
 
+![To-Do List](https://github.com/user-attachments/assets/cf93bba7-972e-4746-b344-9719ecab82dd)
+
 Objective 3: design the forms in the app to be user-friendly enough to search and edit records as well as create new ones.
+
+![Navigation Sidebar](https://github.com/user-attachments/assets/6f39957a-eb31-4036-be6a-10779a9dac1b)
 
 Objective 4: remove any specific **time of day** from the To-Do list as verifications of equipment and expirations of chemicals are not specific to the time and are not of use to a lab tech. 
 >[!Note]
@@ -76,12 +73,8 @@ Objective: Use Power FX to automate Equipment table verification data for lab te
 - If a piece of equipment is due for verification in the next 7 days, verification status is "Verify Soon"
 - If a piece of equipment is due for verification  >7 days from current user date, verification status is "Verification in date"
 - If equipment is due for verification because the verification due date has passed, verification status is "Verification Overdue!"
-Result: Success using the following formula: 
 > [!Note] 
 > Power FX Equipment Date Automatic Status: If(UTCToday() > 'Next Verification Due Date', "Verification Overdue!", If('Next Verification Due Date' >= UTCToday() && 'Next Verification Due Date' < UTCToday() + 7,"Verify Soon","Verification in Date"))
-
-
-Objective: send an email with COA when sample testing complete
 
 ---
 6. **Status Tracking and Business Rules**
@@ -89,7 +82,7 @@ Rule made for incongruent data entry logic: disposal data for a sample cannot be
 
 ---
 
-7. **Challenges and Solutions** (select drop arrow beside each challenge for solutions)
+7. **Challenges and Solutions**
 
 Challenge 1: Unable to add PDFs of SDS documents or pictures to each staff member in dataverse tables because columns created with the *file* or *image* type were read-only by default.
 	Solution: searched the web to determine if it was a normal default setting or if I had broken something. Discovered it was these  column types were read-only by default but there was indeed a way to add files and images to these column types by utilizing forms to upload the document and image attachments. The columns I had made for these data types needed to be added to a form that was then utilized to edit the table.
@@ -100,11 +93,16 @@ Challenge 2: Dataverse table columns couldn't be deleted due to dependencies.
 Challenge 3: Constant interruptions to app testing due to Microsoft requesting repeated sign-ins. When using the canvas page for the To-Do list, errors were displayed and selecting "Sign In" froze the app preview.
 	Solution: this was due to browser pop-up and security settings. Microsoft Power Platform sites were whitelisted and the issue was resolved easily.
 
+ ![Sign in again](https://github.com/user-attachments/assets/dbda8aad-f9cc-431c-977f-c05a31f966bf)
+
 Challenge 4: Scope Creep
 Throughout my time working on the app, I struggled with having a rigid boundary of goals. I found myself expanding and making more tables or forms and exploring random ways to do things without focusing on one area and making that solution/function more robust.
 	Solution: Narrow focus onto the functionality of main tables that a lab tech would use most and reduce resources spent on the Personnel and Locations tables.
 
 Challenge(?) 5: Not necessarily a challenge, but I wanted to try making a workflow for the samples table where a client would be emailed when a certificate of analysis was added to their sample. I managed to create the workflow and tests were "successful". However, within the workflow, adding a certificate of analysis was passed in the system as a "False" condition result, so instead of sending an email, the flow resulted in no action. So the flow had no direct "errors" but the end result was not what I wanted.
+
+![Send COA Flow](https://github.com/user-attachments/assets/eec22698-be02-4cf6-83dc-796a34242eca)
+
 
 ---
 
@@ -127,7 +125,6 @@ Innovation Idea 1: for Future Use:  Explore document file storage in dataverse a
 
 ---
 
-Don't use lorem ipsum placeholder text for every single procedure in the document system. This was utilized to prove the concept of the app functionality but in reality would be unique files actually used by the company and may include formats other than PDF specifically.
 
 9. **Conclusion**
 
